@@ -24,16 +24,14 @@ This project provides a TypeScript script to find the fake gold bar using a simu
 1. **Clone the Repository:**
    - Open a terminal and run the following command to clone the GitHub repository:
      ```sh
-     git clone <repository_url>
+     git clone https://github.com/cooliofooliodawg/finding_fake_bar
      ```
-   - Replace `<repository_url>` with the URL of the GitHub repository.
 
 2. **Navigate to the Project Directory:**
-   - Change to the project directory where `find_fake_bar.ts` is located:
+   - Change to the project directory where `finding_fake_bar.ts` is located:
      ```sh
-     cd <project_directory>
+     cd finding_fake_bar
      ```
-   - Replace `<project_directory>` with the name of the directory created by cloning the repository.
 
 3. **Install Dependencies:**
    - Run the following command to install the necessary dependencies:
@@ -46,14 +44,14 @@ This project provides a TypeScript script to find the fake gold bar using a simu
 1. **Execute the Script:**
    - In the terminal, run the following command to execute the script:
      ```sh
-     npx ts-node find_fake_bar.ts
+     npx ts-node finding_fake_bar.ts
      ```
 
 ## Project Structure
 
-fake-gold-bar-finder/
+finding_fake_bar/
 │
-├── find_fake_bar.ts
+├── finding_fake_bar.ts
 ├── package.json
 ├── tsconfig.json
 └── README.md
