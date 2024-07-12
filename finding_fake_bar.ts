@@ -9,27 +9,26 @@ import puppeteer from 'puppeteer';
 
   // Helper function to perform a weighing
   const performWeighing = async (leftBars: number[], rightBars: number[]): Promise<string> => {
-    // Clear the scales
-    await page.click('#reset-button');
-    
+    // Clear the scales by clicking the reset button
+    const grabElements = await page.$$('#reset');
+    await grabElements[1].click();
+
     // Fill the left bowl
-    for (const bar of leftBars) {
-      await page.type('#left-bowl', bar.toString());
-      await page.keyboard.press('Enter');
+    for (let i = 0; i < leftBars.length; i++) {
+      await page.type(`#left_${i}`, leftBars[i].toString());
     }
 
     // Fill the right bowl
-    for (const bar of rightBars) {
-      await page.type('#right-bowl', bar.toString());
-      await page.keyboard.press('Enter');
+    for (let i = 0; i < rightBars.length; i++) {
+      await page.type(`#right_${i}`, rightBars[i].toString());
     }
 
     // Perform the weighing
-    await page.click('#weigh-button');
-    await page.waitForTimeout(1000);  // Wait for the result to be displayed
+    await page.click('#weigh');
+    await page.waitForTimeout(4000);  // Wait for the result to be displayed
 
-    // Get the result
-    const result = await page.$eval('#result', el => el.textContent);
+    // Get the result from the disabled reset button
+    const result = await page.$eval('#reset:disabled', el => el.textContent);
     return result as string;
   };
 
@@ -42,7 +41,7 @@ import puppeteer from 'puppeteer';
       await dialog.accept();
     });
 
-    await page.click(`#bar-${bar}`);
+    await page.click(`#coin_${bar}`);
     await page.waitForTimeout(1000);  // Wait for the alert
 
     return alertText;
@@ -57,9 +56,9 @@ import puppeteer from 'puppeteer';
     weighings.push([[0, 1, 2], [3, 4, 5], result]);
 
     let suspectBars: number[];
-    if (result === 'Left') {
+    if (result === '<') {
       suspectBars = [0, 1, 2];
-    } else if (result === 'Right') {
+    } else if (result === '>') {
       suspectBars = [3, 4, 5];
     } else {
       suspectBars = [6, 7, 8];
@@ -70,9 +69,9 @@ import puppeteer from 'puppeteer';
     weighings.push([suspectBars.slice(0, 2), [suspectBars[2]], result]);
 
     let fakeBar: number;
-    if (result === 'Left') {
+    if (result === '<') {
       fakeBar = suspectBars[0];
-    } else if (result === 'Right') {
+    } else if (result === '>') {
       fakeBar = suspectBars[2];
     } else {
       fakeBar = suspectBars[1];

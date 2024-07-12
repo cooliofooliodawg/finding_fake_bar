@@ -64,10 +64,11 @@ finding_fake_bar/
 - The script outputs the fake bar number, the result message from the website, and a list of weighings made.
 
 ### Example Output
-
+```
 Fake bar: 7
 Result: Yay! You found it!
 Weighings:
 [0, 1, 2] vs [3, 4, 5] -> Same
 [6, 7, 8] vs [0, 1, 2] -> Left
 [6] vs [7] -> Right
+```
