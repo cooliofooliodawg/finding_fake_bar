@@ -48,15 +48,14 @@ This project provides a TypeScript script to find the fake gold bar using a simu
      ```
 
 ## Project Structure
-
+```
 finding_fake_bar/
-
 │
 ├── finding_fake_bar.ts
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
+```
 
 ## Explanation
 
