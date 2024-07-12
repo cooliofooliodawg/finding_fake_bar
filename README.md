@@ -68,7 +68,7 @@ finding_fake_bar/
 Fake bar: 7
 Result: Yay! You found it!
 Weighings:
-[0, 1, 2] vs [3, 4, 5] -> Same
-[6, 7, 8] vs [0, 1, 2] -> Left
-[6] vs [7] -> Right
+[0, 1, 2] vs [3, 4, 5] -> =
+[6, 7, 8] vs [0, 1, 2] -> <
+[6] vs [7] -> <
 ```
