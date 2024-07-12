@@ -25,7 +25,7 @@ import puppeteer from 'puppeteer';
 
     // Perform the weighing
     await page.click('#weigh');
-    await page.waitForTimeout(4000);  // Wait for the result to be displayed
+    await page.waitForTimeout(2000);  // Wait for the result to be displayed
 
     // Get the result from the disabled reset button
     const result = await page.$eval('#reset:disabled', el => el.textContent);
@@ -64,17 +64,18 @@ import puppeteer from 'puppeteer';
       suspectBars = [6, 7, 8];
     }
 
-    // Second weighing: compare two bars from the suspect group
-    result = await performWeighing(suspectBars.slice(0, 2), [suspectBars[2]]);
-    weighings.push([suspectBars.slice(0, 2), [suspectBars[2]], result]);
+    // Second weighing: compare bars 0 and 1 from the suspect group
+    result = await performWeighing([suspectBars[0]], [suspectBars[1]]);
+    weighings.push([[suspectBars[0]], [suspectBars[1]], result]);
 
     let fakeBar: number;
     if (result === '<') {
       fakeBar = suspectBars[0];
     } else if (result === '>') {
-      fakeBar = suspectBars[2];
-    } else {
       fakeBar = suspectBars[1];
+    } else {
+      // If the first two bars are equal, the third bar is the fake one
+      fakeBar = suspectBars[2];
     }
 
     return [fakeBar, weighings];

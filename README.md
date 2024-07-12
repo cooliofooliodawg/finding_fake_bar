@@ -1,4 +1,5 @@
 # Fake Gold Bar Finder
+# Fake Gold Bar Finder
 
 This project provides a TypeScript script to find the fake gold bar using a simulated balance scale on a website. The script automates the process of weighing the bars to identify the fake one, which is lighter than the others.
 
@@ -48,6 +49,7 @@ This project provides a TypeScript script to find the fake gold bar using a simu
      ```
 
 ## Project Structure
+
 ```
 finding_fake_bar/
 │
@@ -64,6 +66,7 @@ finding_fake_bar/
 - The script outputs the fake bar number, the result message from the website, and a list of weighings made.
 
 ### Example Output
+
 ```
 Fake bar: 7
 Result: Yay! You found it!
